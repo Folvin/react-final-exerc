@@ -10,7 +10,7 @@ export class Table extends React.Component {
     };
     render() {
         return (
-            <div>
+            <div className="tableComponent">
                 <Search contactFilter={this.contactFilter} />
                 <table>
                     <tbody>
@@ -47,6 +47,6 @@ class Row extends React.Component {
 
 class Search extends React.Component {
     render() {
-        return <input onChange={this.props.contactFilter} type="search" />;
+        return <input placeholder="filter by first name" onChange={this.props.contactFilter} type="search" />;
     }
 }
