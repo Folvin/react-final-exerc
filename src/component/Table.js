@@ -5,7 +5,7 @@ export class Table extends React.Component {
 
     contactFilter = (e) => {
         const dataCopy = [...data];
-        const FilteredData = dataCopy.filter((data) => data.first_name.includes(e.target.value));
+        const FilteredData = dataCopy.filter((data) => data.first_name.toLowerCase().includes(e.target.value));
         this.setState({tableData: FilteredData});
     };
     render() {
