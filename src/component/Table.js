@@ -1,11 +1,14 @@
 import React from "react";
 import data from "../data/db";
+
 export class Table extends React.Component {
     state = {tableData: data};
 
     contactFilter = (e) => {
         const dataCopy = [...data];
-        const FilteredData = dataCopy.filter((data) => data.first_name.toLowerCase().includes(e.target.value));
+        const FilteredData = dataCopy.filter((data) =>
+            data.first_name.toLowerCase().includes(e.target.value.toLowerCase())
+        );
         this.setState({tableData: FilteredData});
     };
     render() {
@@ -45,8 +48,21 @@ class Row extends React.Component {
     }
 }
 
+const contactFilter = (text) => {
+    const dataCopy = [...data];
+    const FilteredData = dataCopy.filter((data) =>
+        data.first_name.toLowerCase().includes(text.toLowerCase())
+    );
+    this.setState({tableData: FilteredData});
+};
 class Search extends React.Component {
     render() {
-        return <input placeholder="filter by first name" onChange={this.props.contactFilter} type="search" />;
+        return (
+            <input
+                placeholder="filter by first name"
+                onChange={(e) => contactFilter(e.target.value)}
+                type="search"
+            />
+        );
     }
 }
